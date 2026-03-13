@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PickMyDistro Distribution Database",
+  "description": "Schema for Linux distribution entries in the PickMyDistro recommendation engine",
+  "type": "object",
+  "properties": {
+    "version": { "type": "string", "description": "Schema version for compatibility tracking" },
+    "lastUpdated": { "type": "string", "format": "date", "description": "Date data was last verified" },
+    "distros": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "tagline", "description", "color", "icon", "difficulty", "desktop", "packageManager", "releaseModel", "basedOn", "website", "pros", "cons", "traits", "categories"],
+        "properties": {
+          "name": { "type": "string", "description": "Display name of the distribution" },
+          "tagline": { "type": "string", "maxLength": 60, "description": "Short tagline (under 60 chars)" },
+          "description": { "type": "string", "maxLength": 300, "description": "One-paragraph description (under 300 chars)" },
+          "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$", "description": "Brand hex color" },
+          "icon": { "type": "string", "description": "Emoji icon for display" },
+          "difficulty": { "type": "integer", "minimum": 1, "maximum": 5, "description": "1=Easy, 5=Expert" },
+          "desktop": { "type": "array", "items": { "type": "string" }, "description": "Available desktop environments" },
+          "packageManager": { "type": "string", "description": "Primary package manager and format" },
+          "releaseModel": { "type": "string", "description": "Rolling, Fixed, LTS, Immutable, etc." },
+          "basedOn": { "type": "string", "enum": ["independent", "debian", "ubuntu", "fedora", "arch", "rhel", "suse", "gentoo", "void", "nix", "slackware"], "description": "Parent distribution family" },
+          "initSystem": { "type": "string", "enum": ["systemd", "runit", "openrc", "s6", "sysvinit", "other"], "description": "Init system" },
+          "website": { "type": "string", "format": "uri" },
+          "pros": { "type": "array", "items": { "type": "string" }, "minItems": 3, "maxItems": 5 },
+          "cons": { "type": "array", "items": { "type": "string" }, "minItems": 3, "maxItems": 5 },
+          "traits": {
+            "type": "object",
+            "description": "Scoring traits (0-10 scale) used by display scoring engine",
+            "required": ["beginner", "gaming", "privacy", "dev", "server", "light", "custom", "stable", "latest"],
+            "properties": {
+              "beginner": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Beginner-friendliness" },
+              "gaming": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Gaming support (Steam, Proton, drivers)" },
+              "privacy": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Privacy stance and tools" },
+              "dev": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Developer tools and ecosystem" },
+              "server": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Server and self-hosting capability" },
+              "light": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Lightweight / old hardware viability" },
+              "custom": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Customization depth" },
+              "stable": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Update reliability and LTS support" },
+              "latest": { "type": "integer", "minimum": 0, "maximum": 10, "description": "How current packages are" }
+            }
+          },
+          "categories": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["beginner", "desktop", "gaming", "server", "enterprise", "privacy", "security", "developer", "lightweight", "advanced", "immutable", "pentesting", "education", "multimedia", "science"] },
+            "description": "Applicable use-case categories for tree routing"
+          },
+          "nvidiaSupport": { "type": "string", "enum": ["excellent", "good", "fair", "poor"], "description": "NVIDIA driver support quality" },
+          "immutable": { "type": "boolean", "description": "Whether the OS uses an immutable/atomic model" },
+          "yearFounded": { "type": "integer", "description": "Year the project was first released" }
+        }
+      }
+    }
+  }
+}
