@@ -1,11 +1,11 @@
 {
-  "version": "2.0.0",
-  "lastUpdated": "2026-03-13",
+  "version": "2.0.1",
+  "lastUpdated": "2026-04-19",
   "distroCount": 50,
   "distros": {
     "ubuntu": {
       "name": "Ubuntu", "tagline": "The gateway to Linux", "color": "#E95420", "icon": "🟠", "difficulty": 1,
-      "description": "The most popular desktop Linux distribution. Massive community, commercial support from Canonical, and the widest software compatibility of any distro. Ubuntu 24.04 LTS is the current long-term release.",
+      "description": "The most popular desktop Linux distribution. Massive community, commercial support from Canonical, and the widest software compatibility of any distro. Ubuntu 25.10 is current; 26.04 LTS 'Resolute Raccoon' lands April 23, 2026 with GNOME 50, Wayland-only sessions, kernel 7.0, and Rust-based core utilities.",
       "desktop": ["GNOME"], "packageManager": "APT (deb) + Snap", "releaseModel": "Fixed (6-month, LTS every 2 years)", "basedOn": "debian", "initSystem": "systemd",
       "website": "https://ubuntu.com",
       "pros": ["Largest community and documentation", "Widest software and hardware compatibility", "Long-term support (5+ years with ESM)", "Excellent cloud and server integration"],
@@ -16,7 +16,7 @@
     },
     "mint": {
       "name": "Linux Mint", "tagline": "Elegant & comfortable", "color": "#87CF3E", "icon": "🟢", "difficulty": 1,
-      "description": "The most Windows-like Linux experience. Ships Cinnamon desktop with no Snaps, excellent out-of-the-box usability, and rock-solid Ubuntu LTS base. Mint 22 is the current release.",
+      "description": "The most Windows-like Linux experience. Ships Cinnamon desktop with no Snaps, excellent out-of-the-box usability, and rock-solid Ubuntu LTS base. Mint 22.3 'Zena' (January 2026) is current; Mint 23 — based on Ubuntu 26.04 LTS — is targeted for Christmas 2026 under a new longer release cadence.",
       "desktop": ["Cinnamon", "MATE", "Xfce"], "packageManager": "APT (deb) + Flatpak", "releaseModel": "Fixed (follows Ubuntu LTS)", "basedOn": "ubuntu", "initSystem": "systemd",
       "website": "https://linuxmint.com",
       "pros": ["Most familiar experience for Windows users", "No Snap packages", "Excellent built-in tools (Timeshift, Update Manager)", "Stable Ubuntu LTS base"],
@@ -38,7 +38,7 @@
     },
     "fedora": {
       "name": "Fedora", "tagline": "Leading-edge innovation", "color": "#51A2DA", "icon": "🔵", "difficulty": 2,
-      "description": "Red Hat's community distribution. Fedora 42+ ships DNF 5, Rust-based coreutils, and the latest GNOME. The proving ground for RHEL technologies with strong privacy defaults.",
+      "description": "Red Hat's community distribution. Fedora 43 (October 2025) ships RPM 6.0, DNF 5, GNOME 49 Wayland-only, kernel 6.17, and Python 3.14. Fedora 44 with GNOME 50 and KDE Plasma 6.6 is now expected April 28, 2026 after blocker-bug delays. The proving ground for RHEL technologies with strong privacy defaults.",
       "desktop": ["GNOME", "KDE", "Xfce", "Sway", "Budgie"], "packageManager": "DNF 5 (rpm) + Flatpak", "releaseModel": "Fixed (6-month cycles)", "basedOn": "independent", "initSystem": "systemd",
       "website": "https://fedoraproject.org",
       "pros": ["Latest stable software without rolling risk", "Excellent GNOME and KDE spins", "Strong security defaults (SELinux)", "DNF 5 is significantly faster"],
@@ -71,7 +71,7 @@
     },
     "debian": {
       "name": "Debian", "tagline": "The universal operating system", "color": "#A80030", "icon": "🔴", "difficulty": 3,
-      "description": "The grandfather of Ubuntu, Mint, and hundreds of derivatives. Famous for rock-solid stability and 60,000+ packages. Debian 12 'Bookworm' is the current stable release.",
+      "description": "The grandfather of Ubuntu, Mint, and hundreds of derivatives. Famous for rock-solid stability and 69,000+ packages. Debian 13 'Trixie' (released August 2025; current point release 13.4 from March 14, 2026) is the active stable.",
       "desktop": ["GNOME", "KDE", "Xfce", "MATE", "LXQt", "Cinnamon"], "packageManager": "APT (deb)", "releaseModel": "Fixed (2-year cycles)", "basedOn": "independent", "initSystem": "systemd",
       "website": "https://debian.org",
       "pros": ["Legendary stability", "Massive 60,000+ package repository", "Strong free software commitment", "The backbone of countless servers"],
@@ -104,7 +104,7 @@
     },
     "popos": {
       "name": "Pop!_OS", "tagline": "Built for creators & gamers", "color": "#FCC624", "icon": "🟡", "difficulty": 1,
-      "description": "System76's distribution now featuring COSMIC — a Rust-based desktop environment built from scratch. COSMIC Epoch 1 launched December 2025 with Wayland-native tiling, excellent NVIDIA support, and polished productivity workflows.",
+      "description": "System76's distribution featuring COSMIC — a Rust-based desktop environment built from scratch. COSMIC Epoch 1 shipped December 2025 in Pop!_OS 24.04 LTS; rolling point releases (1.0.10 in April 2026) bring Wayland-native tiling, polished productivity workflows, and excellent NVIDIA support.",
       "desktop": ["COSMIC"], "packageManager": "APT (deb)", "releaseModel": "Fixed (follows Ubuntu)", "basedOn": "ubuntu", "initSystem": "systemd",
       "website": "https://pop.system76.com",
       "pros": ["Best NVIDIA out-of-the-box support", "COSMIC desktop with native tiling", "Recovery partition for emergencies", "System76 hardware optimization"],
@@ -126,7 +126,7 @@
     },
     "zorin": {
       "name": "Zorin OS", "tagline": "Your computer, but better", "color": "#15A6F0", "icon": "💎", "difficulty": 1,
-      "description": "Designed specifically for Windows and macOS migrants. Beautiful interface with switchable layouts that mimic Windows 11, macOS, or ChromeOS. Zorin 17 is based on Ubuntu 24.04 LTS.",
+      "description": "Designed specifically for Windows and macOS migrants. Beautiful interface with switchable layouts that mimic Windows 11, macOS, or ChromeOS. Zorin OS 18.1 (April 2026) is based on Ubuntu 24.04 LTS, adds a new Lite edition for older PCs, ships LibreOffice 26.2, and detects 240+ Windows app installers.",
       "desktop": ["GNOME (customized)"], "packageManager": "APT (deb) + Flatpak", "releaseModel": "Fixed (follows Ubuntu LTS)", "basedOn": "ubuntu", "initSystem": "systemd",
       "website": "https://zorin.com",
       "pros": ["Familiar layouts for Windows/macOS/ChromeOS users", "Beautiful default theme", "Very beginner-friendly", "Lite edition for older hardware"],
@@ -137,7 +137,7 @@
     },
     "endeavouros": {
       "name": "EndeavourOS", "tagline": "A terminal-centric Arch experience", "color": "#7B3FA0", "icon": "🟣", "difficulty": 3,
-      "description": "A graphical Arch installer that stays close to vanilla Arch. Ganymede Neo (January 2026) ships KDE Plasma 6.5 and Linux 6.18. The community is famously friendly and welcoming.",
+      "description": "A graphical Arch installer that stays close to vanilla Arch. The 2026.03.06 'Titan' release ships KDE Plasma 6.6, Linux 6.19.6, Calamares 26.03, and Firefox 148. The community is famously friendly and welcoming.",
       "desktop": ["KDE", "GNOME", "Xfce", "i3", "BSPWM", "Sway", "Hyprland"], "packageManager": "Pacman + AUR", "releaseModel": "Rolling", "basedOn": "arch", "initSystem": "systemd",
       "website": "https://endeavouros.com",
       "pros": ["True vanilla Arch experience simplified", "Exceptionally friendly community", "Wide DE/WM selection", "Close to upstream Arch"],
@@ -148,7 +148,7 @@
     },
     "cachyos": {
       "name": "CachyOS", "tagline": "Performance-tuned Arch", "color": "#4FC3F7", "icon": "⚡", "difficulty": 2,
-      "description": "The hottest Arch derivative in 2025–2026, topping DistroWatch. Features BORE scheduler, CPU-targeted builds (x86-64-v3/v4), AutoFDO-profiled kernels, and a Calamares installer with animated desktop previews. March 2026 ships Linux 6.18 LTS and KDE Plasma 6.6.",
+      "description": "The hottest Arch derivative in 2025–2026, topping DistroWatch. Features BORE scheduler, CPU-targeted builds (x86-64-v3/v4), AutoFDO-profiled kernels, and a Calamares installer with animated desktop previews. April 2026 ships Linux 6.19, KDE Plasma 6.6, and Proton-CachyOS for gaming.",
       "desktop": ["KDE", "GNOME", "Xfce", "COSMIC", "Hyprland", "Sway", "i3"], "packageManager": "Pacman (forked) + AUR", "releaseModel": "Rolling", "basedOn": "arch", "initSystem": "systemd",
       "website": "https://cachyos.org",
       "pros": ["BORE scheduler + AutoFDO-profiled kernel for top performance", "CPU-optimized builds (v3/v4/znver4)", "Excellent gaming support with Proton-CachyOS", "User-friendly for an Arch derivative"],
@@ -335,7 +335,7 @@
     },
     "steamos": {
       "name": "SteamOS", "tagline": "Valve's gaming OS for Steam Deck", "color": "#1B2838", "icon": "🎮", "difficulty": 2,
-      "description": "Valve's Arch-based OS powering the Steam Deck. Boots to Game Mode (Big Picture) or a KDE Plasma desktop. Immutable base with Flatpak for desktop apps. SteamOS 3.6+ is current.",
+      "description": "Valve's Arch-based OS powering the Steam Deck. Boots to Game Mode (Big Picture) or a KDE Plasma desktop. Immutable base with Flatpak for desktop apps. SteamOS 3.7.20 (March 2026) adds the NTSync driver, official Legion Go S support, and limited support for other AMD-powered handhelds.",
       "desktop": ["KDE"], "packageManager": "Flatpak (desktop)", "releaseModel": "Rolling (immutable)", "basedOn": "arch", "initSystem": "systemd",
       "website": "https://store.steampowered.com/steamos",
       "pros": ["Built specifically for gaming by Valve", "Powers the Steam Deck", "Console-like Game Mode experience", "KDE desktop for productivity"],
@@ -379,7 +379,7 @@
     },
     "kubuntu": {
       "name": "Kubuntu", "tagline": "KDE Plasma on Ubuntu", "color": "#0074D9", "icon": "🔵", "difficulty": 1,
-      "description": "Official Ubuntu flavor featuring KDE Plasma desktop. Same Ubuntu base with LTS support but a more customizable, Windows-like interface. KDE Plasma 6+ on 24.04.",
+      "description": "Official Ubuntu flavor featuring KDE Plasma desktop. Same Ubuntu base with LTS support but a more customizable, Windows-like interface. KDE Plasma 6.6 on the upcoming 26.04 LTS (April 23, 2026) — Kubuntu retains LTS status this cycle.",
       "desktop": ["KDE"], "packageManager": "APT (deb) + Snap", "releaseModel": "Fixed (follows Ubuntu LTS)", "basedOn": "ubuntu", "initSystem": "systemd",
       "website": "https://kubuntu.org",
       "pros": ["Full Ubuntu compatibility", "KDE Plasma's extensive customization", "LTS support cycle", "Familiar Windows-like layout"],
@@ -412,7 +412,7 @@
     },
     "ubuntu_mate": {
       "name": "Ubuntu MATE", "tagline": "Traditional desktop for everyone", "color": "#87A556", "icon": "🟤", "difficulty": 1,
-      "description": "Official Ubuntu flavor with the MATE desktop — a continuation of GNOME 2. Traditional desktop layout that's intuitive and resource-efficient. Great Raspberry Pi support.",
+      "description": "Official Ubuntu flavor with the MATE desktop — a continuation of GNOME 2. Traditional desktop layout that's intuitive and resource-efficient. Great Raspberry Pi support. Note: Ubuntu MATE will not carry LTS status on 26.04 due to limited contributor resources.",
       "desktop": ["MATE"], "packageManager": "APT (deb) + Snap", "releaseModel": "Fixed (follows Ubuntu LTS)", "basedOn": "ubuntu", "initSystem": "systemd",
       "website": "https://ubuntu-mate.org",
       "pros": ["Traditional, intuitive desktop layout", "Lower resource use than GNOME", "Excellent Raspberry Pi support", "Highly customizable panel layouts"],
