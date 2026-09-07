@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 /* ═══════════════════════════════════════════════
-   DISTRO DATABASE (57 distributions, verified May 2026)
+   DISTRO DATABASE (57 distributions, verified September 2026)
    Source: distros.json — see schema.json for field documentation
    ═══════════════════════════════════════════════ */
 
@@ -9,7 +9,7 @@ const DISTROS = {
   ubuntu: {
     name: "Ubuntu", tagline: "The gateway to Linux", color: "#E95420", icon: "🟠", difficulty: 1,
     desktop: ["GNOME"], packageManager: "APT (deb) + Snap", releaseModel: "Fixed (6-month, LTS every 2 years)",
-    description: "The most popular desktop Linux distribution. Massive community, commercial support from Canonical, and the widest software compatibility of any distro. Ubuntu 26.04 LTS 'Resolute Raccoon' shipped April 23, 2026 with GNOME 50 on Wayland, kernel 7.0, Rust-based core utilities, TPM-backed full-disk encryption, and the first native CUDA/ROCm support in the repos. Supported through May 2031 (2036 with Pro).",
+    description: "The most popular desktop Linux distribution. Massive community, commercial support from Canonical, and the widest software compatibility of any distro. Ubuntu 26.04.1 LTS 'Resolute Raccoon' (August 27, 2026) is the current install image, with GNOME 50 on Wayland, kernel 7.0, Rust-based core utilities, and TPM-backed full-disk encryption. Supported through May 2031 (2036 with Pro).",
     pros: ["Largest community and documentation","Widest software and hardware compatibility","Long-term support (5+ years with ESM)","Excellent cloud and server integration"],
     cons: ["Snap packages can be slow to launch","GNOME is resource-heavy","Canonical's commercial priorities sometimes conflict with community"],
     website: "https://ubuntu.com",
@@ -19,7 +19,7 @@ const DISTROS = {
   mint: {
     name: "Linux Mint", tagline: "Elegant & comfortable", color: "#87CF3E", icon: "🟢", difficulty: 1,
     desktop: ["Cinnamon","MATE","Xfce"], packageManager: "APT (deb) + Flatpak", releaseModel: "Fixed (follows Ubuntu LTS)",
-    description: "The most Windows-like Linux experience. Ships Cinnamon desktop with no Snaps, excellent out-of-the-box usability, and rock-solid Ubuntu LTS base. Mint 22.3 'Zena' (January 2026) is current; Mint 23 — based on Ubuntu 26.04 LTS — is targeted for Christmas 2026 under a new longer release cadence.",
+    description: "The most Windows-like Linux experience. Ships Cinnamon desktop with no Snaps, excellent out-of-the-box usability, and rock-solid Ubuntu LTS base. Mint 22.3 'Zena' is current, refreshed with HWE ISOs on kernel 7.0 in August 2026. Mint 23 — Ubuntu 26.04-based, with Cinnamon on Wayland and LMDE's installer — is due December 2026.",
     pros: ["Most familiar experience for Windows users","No Snap packages","Excellent built-in tools (Timeshift, Update Manager)","Stable Ubuntu LTS base"],
     cons: ["Slower to receive newest software","Smaller community than Ubuntu","Not suitable for server use"],
     website: "https://linuxmint.com",
@@ -39,7 +39,7 @@ const DISTROS = {
   fedora: {
     name: "Fedora", tagline: "Leading-edge innovation", color: "#51A2DA", icon: "🔵", difficulty: 2,
     desktop: ["GNOME","KDE","Xfce","Sway","Budgie"], packageManager: "DNF 5 (rpm) + Flatpak", releaseModel: "Fixed (6-month cycles)",
-    description: "Red Hat's community distribution. Fedora 44 (April 28, 2026) ships GNOME 50, KDE Plasma 6.6, GCC 16, Python 3.14.4, Go 1.26, C++26 toolchains, and the NTSYNC kernel module enabled for Wine and Steam. The proving ground for RHEL technologies with strong privacy defaults.",
+    description: "Red Hat's community distribution and the proving ground for RHEL technologies. Fedora 44 (April 28, 2026) ships GNOME 50, KDE Plasma 6.6, GCC 16, Python 3.14, and the NTSYNC kernel module for Wine and Steam; it is supported until June 2027. Fedora 45 is targeted for October 20, 2026.",
     pros: ["Latest stable software without rolling risk","Excellent GNOME and KDE spins","Strong security defaults (SELinux)","DNF 5 is significantly faster"],
     cons: ["Short support cycle (13 months per release)","No proprietary codecs out of the box","Smaller repos than Debian/Ubuntu"],
     website: "https://fedoraproject.org",
@@ -49,7 +49,7 @@ const DISTROS = {
   fedora_silverblue: {
     name: "Fedora Silverblue", tagline: "Immutable Fedora with GNOME", color: "#3C6EB4", icon: "🔷", difficulty: 3,
     desktop: ["GNOME"], packageManager: "rpm-ostree + Flatpak", releaseModel: "Fixed (follows Fedora)",
-    description: "Fedora's immutable desktop variant using OSTree. The base system is read-only with atomic updates and rollbacks. Apps are installed via Flatpak or toolbox containers. Silverblue 44 (April 28, 2026) ships GNOME 50 atop the same atomic image model used by Fedora Atomic Desktops.",
+    description: "Fedora's immutable desktop variant using OSTree. The base system is read-only with atomic updates and rollbacks. Apps are installed via Flatpak or toolbox containers. Silverblue 44 (April 28, 2026) ships GNOME 50; Fedora 45 in October 2026 brings a web-based installer to the Atomic desktops.",
     pros: ["Atomic updates with instant rollback","Rock-solid base system","Flatpak-first app model","Same Fedora release cadence"],
     cons: ["Can't easily install traditional RPMs","Steeper learning curve for package management","Toolbox/Distrobox needed for dev work"],
     website: "https://fedoraproject.org/atomic-desktops/silverblue/",
@@ -59,7 +59,7 @@ const DISTROS = {
   arch: {
     name: "Arch Linux", tagline: "Keep it simple, build it yourself", color: "#1793D1", icon: "🏔️", difficulty: 4,
     desktop: ["Any (you choose)"], packageManager: "Pacman + AUR", releaseModel: "Rolling",
-    description: "A rolling-release distribution with a minimal base. You build your system from scratch using pacman and the AUR. The Arch Wiki is the best documentation in all of Linux. The 2026.05.01 install ISO ships kernel 7.0.3, Archinstall 4.3 (with the new Additional Fonts menu), KDE Plasma 6.6.4, and GNOME 50.1.",
+    description: "A rolling-release distribution with a minimal base. You build your system from scratch using pacman and the AUR — roughly 15,800 official packages and 49,000+ AUR build scripts. The Arch Wiki is the best documentation in all of Linux. The 2026.09.01 install ISO ships kernel 7.2.2 and Archinstall 4.4.",
     pros: ["Always up-to-date packages","AUR has virtually everything","Legendary Arch Wiki","Total system control"],
     cons: ["Manual installation (archinstall helps)","Can break with updates","Steep learning curve","Requires ongoing maintenance"],
     website: "https://archlinux.org",
@@ -69,7 +69,7 @@ const DISTROS = {
   debian: {
     name: "Debian", tagline: "The universal operating system", color: "#A80030", icon: "🔴", difficulty: 3,
     desktop: ["GNOME","KDE","Xfce","MATE","LXQt","Cinnamon"], packageManager: "APT (deb)", releaseModel: "Fixed (2-year cycles)",
-    description: "The grandfather of Ubuntu, Mint, and hundreds of derivatives. Famous for rock-solid stability and 69,000+ packages. Debian 13 'Trixie' (released August 2025; current point release 13.5 from May 16, 2026 with 103 security fixes) is the active stable, supported through 2030 with LTS.",
+    description: "The grandfather of Ubuntu, Mint, and hundreds of derivatives. Famous for rock-solid stability and 69,000+ packages. Debian 13 'Trixie' (August 2025; point release 13.6 on July 11, 2026) is the active stable, with full support to August 2028 and LTS through June 2030.",
     pros: ["Legendary stability","Massive 60,000+ package repository","Strong free software commitment","The backbone of countless servers"],
     cons: ["Older software versions in Stable","Installer less polished than Ubuntu","Hardware support can lag behind"],
     website: "https://debian.org",
@@ -79,8 +79,8 @@ const DISTROS = {
   opensuse: {
     name: "openSUSE", tagline: "Choose your adventure", color: "#73BA25", icon: "🦎", difficulty: 2,
     desktop: ["KDE","GNOME","Xfce"], packageManager: "Zypper (rpm)", releaseModel: "Rolling (Tumbleweed) or Fixed (Leap)",
-    description: "Two flavors: Tumbleweed (rolling) and Leap 16 (October 2025, supported through October 2027). YaST is the most powerful graphical system configuration tool in Linux. Strong enterprise heritage from SUSE; quantum-resilient crypto rolling out across the ecosystem in 2026.",
-    pros: ["YaST configuration tool","Choice of rolling or stable","Excellent KDE implementation","Btrfs snapshots with Snapper by default"],
+    description: "Two flavors: Tumbleweed (rolling) and Leap 16.0 (October 2025), with Leap 16.1 due November 3, 2026. Leap 16 replaced the YaST installer with Agama, requires x86-64-v2, and keeps Btrfs snapshots by default. Strong enterprise heritage from SUSE, with a migration path to SLES.",
+    pros: ["Modern Agama installer, shared with SUSE Enterprise","Choice of rolling or stable","Excellent KDE implementation","Btrfs snapshots with Snapper by default"],
     cons: ["Smaller community than Debian/Ubuntu","Fewer tutorials available","Package naming conventions can confuse"],
     website: "https://opensuse.org",
     traits: { beginner: 5, gaming: 5, privacy: 6, dev: 8, server: 8, light: 4, custom: 7, stable: 8, latest: 7 },
@@ -99,9 +99,9 @@ const DISTROS = {
   popos: {
     name: "Pop!_OS", tagline: "Built for creators & gamers", color: "#FCC624", icon: "🟡", difficulty: 1,
     desktop: ["COSMIC"], packageManager: "APT (deb)", releaseModel: "Fixed (follows Ubuntu)",
-    description: "System76's distribution featuring COSMIC — a Rust-based desktop environment built from scratch. COSMIC Epoch 1 shipped December 2025 in Pop!_OS 24.04 LTS, with rolling point releases (1.0.12 by mid-2026) adding Wayland-native tiling and strong NVIDIA support. The LTS branding is controversial in 2026: reviewers including Chris Titus have urged users to avoid 24.04 because COSMIC still ships with beta-level memory leaks (launcher reportedly consuming up to 17GB RAM), display/audio bugs, and 1,700+ open GitHub issues. Solid for enthusiasts who want to follow COSMIC's evolution; risky as a first-Linux recommendation right now.",
+    description: "System76's distribution built around COSMIC, a Rust-based desktop environment written from scratch. Pop!_OS 24.04 LTS ships COSMIC Epoch 1, now at Epoch 1.6 (August 2026) with per-app volume control and new Wayland protocols. Early releases drew criticism for beta-level bugs; the 1.x series has steadily closed that gap.",
     pros: ["Best NVIDIA out-of-the-box support","COSMIC desktop with native tiling","Recovery partition for emergencies","System76 hardware optimization"],
-    cons: ["COSMIC ships beta-quality despite LTS branding (memory leaks, 1,700+ open issues in 2026)","Audio and display driver bugs commonly reported","Slow upstream response from System76 to community-filed bugs","Not currently recommended for newcomers expecting LTS stability"],
+    cons: ["COSMIC is younger than GNOME/KDE — fewer features and extensions","Early COSMIC releases drew criticism for beta-level bugs","Small team maintaining both a distribution and a desktop","Still on an Ubuntu 24.04 base rather than 26.04"],
     website: "https://pop.system76.com",
     traits: { beginner: 6, gaming: 8, privacy: 5, dev: 7, server: 3, light: 4, custom: 6, stable: 5, latest: 6 },
     categories: ["beginner","gaming","developer","desktop"], nvidiaSupport: "excellent", immutable: false,
@@ -109,7 +109,7 @@ const DISTROS = {
   manjaro: {
     name: "Manjaro", tagline: "Arch made accessible", color: "#35BF5C", icon: "🌿", difficulty: 2,
     desktop: ["KDE","GNOME","Xfce"], packageManager: "Pacman + AUR", releaseModel: "Rolling (with delay buffer)",
-    description: "An Arch-based distribution with a user-friendly installer, hardware detection, and a delayed package buffer for extra stability. Manjaro 26.1 'Bian-May' (May 2026) brings Linux 7.0, GNOME 50, and KDE Plasma 6.6.4. Bridges the gap between beginner-friendly and rolling-release power.",
+    description: "An Arch-based distribution with a user-friendly installer, hardware detection, and a delayed package buffer for extra stability. Manjaro 26.1.1 (August 2026) brings Linux 7.2 and KDE Frameworks 6.29. Bridges the gap between beginner-friendly and rolling-release power.",
     pros: ["Arch packages without the manual setup","Excellent hardware detection tool (mhwd)","Multiple official desktop editions","Good gaming support"],
     cons: ["Delayed packages can break AUR compatibility","History of security certificate lapses","Not pure Arch — some community friction"],
     website: "https://manjaro.org",
@@ -129,7 +129,7 @@ const DISTROS = {
   endeavouros: {
     name: "EndeavourOS", tagline: "A terminal-centric Arch experience", color: "#7B3FA0", icon: "🟣", difficulty: 3,
     desktop: ["KDE","GNOME","Xfce","i3","BSPWM","Sway","Hyprland"], packageManager: "Pacman + AUR", releaseModel: "Rolling",
-    description: "A graphical Arch installer that stays close to vanilla Arch. 'Titan Neo' (May 1, 2026) refreshes the March Titan release with Linux 6.19, KDE Plasma 6.6, Calamares 26.03, and the new eos-hwtool for GPU drivers. The community is famously friendly and welcoming.",
+    description: "A graphical Arch installer that stays close to vanilla Arch. 'Titan Nova' (August 2026) refreshes the ISO with KDE Plasma 6.7.4 and Linux 7.1.8 while the team finishes Triton, the upcoming Wayland-based release. The community is famously friendly and welcoming.",
     pros: ["True vanilla Arch experience simplified","Exceptionally friendly community","Wide DE/WM selection","Close to upstream Arch"],
     cons: ["Smaller project than Manjaro","Can still break like any Arch system","Less hand-holding post-install"],
     website: "https://endeavouros.com",
@@ -139,7 +139,7 @@ const DISTROS = {
   cachyos: {
     name: "CachyOS", tagline: "Performance-tuned Arch", color: "#4FC3F7", icon: "⚡", difficulty: 2,
     desktop: ["KDE","GNOME","Xfce","COSMIC","Hyprland","Sway","i3"], packageManager: "Pacman (forked) + AUR", releaseModel: "Rolling",
-    description: "The hottest Arch derivative in 2025–2026, topping DistroWatch. Features BORE scheduler, CPU-targeted builds (x86-64-v3/v4), AutoFDO-profiled kernels, and a Calamares installer with animated desktop previews. May 2026 ships the new Linux 7.0 kernel (with FRED for Panther Lake and improved MGLRU), KDE Plasma 6.6, and Proton-CachyOS for gaming.",
+    description: "The hottest Arch derivative in 2025–2026, topping DistroWatch. Features the BORE scheduler, CPU-targeted builds (x86-64-v3/v4), AutoFDO-profiled kernels, and a Calamares installer with animated desktop previews. Recent monthly ISOs add a Hyprland/Noctalia desktop option, KDE Plasma 6.7, and Proton-CachyOS for gaming.",
     pros: ["BORE scheduler + AutoFDO-profiled kernel for top performance","CPU-optimized builds (v3/v4/znver4)","Excellent gaming support with Proton-CachyOS","User-friendly for an Arch derivative"],
     cons: ["Relatively young project (2021)","Custom pacman fork may cause compatibility quirks","Performance focus may not matter on older hardware"],
     website: "https://cachyos.org",
@@ -149,7 +149,7 @@ const DISTROS = {
   nixos: {
     name: "NixOS", tagline: "Reproducible builds, declarative config", color: "#5277C3", icon: "❄️", difficulty: 5,
     desktop: ["Any (you choose)"], packageManager: "Nix", releaseModel: "Fixed + Rolling (Unstable)",
-    description: "Your entire system defined in a single configuration file. Atomic upgrades, instant rollbacks, and fully reproducible environments. The largest package repository (100,000+ packages in Nixpkgs). NixOS 25.05 'Warbler' is current (Plasma 6.3.5, GNOME 48, kernel 6.12 LTS); 26.05 'Yarara' targets end of May 2026.",
+    description: "Your entire system defined in configuration files. Atomic upgrades, instant rollbacks, and fully reproducible environments. The largest package repository (100,000+ packages in Nixpkgs). NixOS 26.05 'Yarara' (May 30, 2026) ships GNOME 50, Plasma 6.6, kernel 6.18 LTS, and systemd stage 1 by default.",
     pros: ["Declarative, reproducible system configuration","Atomic upgrades with instant rollback","Largest package repository in Linux","Perfect for DevOps and infrastructure-as-code"],
     cons: ["Steep learning curve (Nix language)","Documentation has gaps","Nix community governance controversies","Non-standard FHS can break assumptions"],
     website: "https://nixos.org",
@@ -159,7 +159,7 @@ const DISTROS = {
   tails: {
     name: "Tails", tagline: "Privacy by design", color: "#56347C", icon: "🔒", difficulty: 2,
     desktop: ["GNOME"], packageManager: "APT (deb)", releaseModel: "Fixed",
-    description: "A portable OS that routes all traffic through Tor and leaves no trace. Boots from USB, forgets everything on shutdown. Current series is Tails 6.x (6.3 in 2026) with updated Tor Browser and hardened defaults. Used by journalists, activists, and privacy advocates worldwide.",
+    description: "A portable OS that routes all traffic through Tor and leaves no trace. Boots from USB, forgets everything on shutdown. Tails 7.12 (September 3, 2026) is the first release on a new two-week cadence matching Firefox, shipping Tor Browser 15.0.21. Used by journalists, activists, and privacy advocates worldwide.",
     pros: ["Maximum privacy and anonymity","Amnesic — leaves no trace on disk","All traffic routed through Tor","Portable — boots from USB on any computer"],
     cons: ["Not designed for daily use","Limited software selection","Tor overhead slows browsing","Cannot persist data without extra setup"],
     website: "https://tails.net",
@@ -169,7 +169,7 @@ const DISTROS = {
   qubes: {
     name: "Qubes OS", tagline: "Security through compartmentalization", color: "#3874D8", icon: "🛡️", difficulty: 5,
     desktop: ["Xfce (dom0)"], packageManager: "DNF + APT (in qubes)", releaseModel: "Fixed",
-    description: "Uses Xen hypervisor to run every application in an isolated virtual machine. Qubes OS 4.3.0 (2026) is built on Xen 4.19 with a Fedora 41-based dom0, improving stability and security. Endorsed by Edward Snowden and the Freedom of the Press Foundation. The most security-focused desktop OS available.",
+    description: "Uses the Xen hypervisor to run every application in an isolated virtual machine. Qubes OS 4.3.1 (June 11, 2026) runs Xen 4.19 with a Fedora 41 dom0, Debian 13 and Whonix 18 templates, and preloaded disposables. Endorsed by Edward Snowden and the Freedom of the Press Foundation. The most security-focused desktop OS available.",
     pros: ["Strongest compartmentalized security model","Endorsed by top security researchers","Isolates work, personal, and untrusted activities","Disposable VMs for risky operations"],
     cons: ["Extremely high hardware requirements","Steep learning curve","No GPU passthrough (limited gaming)","Resource-intensive (needs 16GB+ RAM)"],
     website: "https://qubes-os.org",
@@ -189,7 +189,7 @@ const DISTROS = {
   elementary: {
     name: "elementary OS", tagline: "The thoughtful, capable, ethical OS", color: "#3689E6", icon: "✨", difficulty: 1,
     desktop: ["Pantheon"], packageManager: "APT (deb) + Flatpak", releaseModel: "Fixed (follows Ubuntu LTS)",
-    description: "macOS-inspired aesthetics with the Pantheon desktop. Focuses on design, simplicity, and a curated AppCenter with pay-what-you-want apps. elementary OS 8.1 (December 2025) is based on Ubuntu 24.04.1 LTS, makes Wayland the default session, ships kernel 6.14, and adds first-class ARM64 UEFI support.",
+    description: "macOS-inspired aesthetics with the Pantheon desktop. Focuses on design, simplicity, and a curated AppCenter with pay-what-you-want apps. elementary OS 8.1.1 (February 2026) is based on Ubuntu 24.04 LTS, makes Wayland the default session, ships kernel 6.14, and adds first-class ARM64 UEFI support.",
     pros: ["Beautiful macOS-like design language","Curated AppCenter with Flatpak","Consistent, cohesive UI experience","Ethical pay-what-you-want model"],
     cons: ["Limited customization by design","Smaller app ecosystem","Not for power users or tinkerers"],
     website: "https://elementary.io",
@@ -209,7 +209,7 @@ const DISTROS = {
   mxlinux: {
     name: "MX Linux", tagline: "Midweight simplicity", color: "#F37626", icon: "🔶", difficulty: 2,
     desktop: ["Xfce","KDE","Fluxbox"], packageManager: "APT (deb)", releaseModel: "Fixed (Debian Stable)",
-    description: "A cooperative venture between antiX and MX communities. MX 25 'Infinity' (November 2025) is built on Debian 13 'Trixie' with Xfce 4.20, Plasma 6.3.6, kernel 6.12 LTS (or 6.16 Liquorix in AHS variants), Qt6-migrated MX Tools, and a new MX-Updater. MX 25.1 adds dual-init (systemd or SysVinit).",
+    description: "A cooperative venture between antiX and MX communities. MX 25.2 'Infinity' (May 25, 2026) is built on Debian 13.5 with Xfce 4.20, kernel 6.12 LTS (or Liquorix 7.0 with Mesa 26.0 in AHS builds), Qt6-migrated MX Tools, a new text-mode installer, and dual-init (systemd or SysVinit).",
     pros: ["Excellent on older hardware","Outstanding MX Tools suite","Debian Stable base for reliability","Active, helpful community"],
     cons: ["Default aesthetics are dated","Not for bleeding-edge software users","Less mainstream recognition"],
     website: "https://mxlinux.org",
@@ -218,7 +218,7 @@ const DISTROS = {
   },
   antix: {
     name: "antiX", tagline: "Fast, lightweight, easy to install", color: "#D32F2F", icon: "🐜", difficulty: 2,
-    desktop: ["IceWM","Fluxbox","JWM"], packageManager: "APT (deb)", releaseModel: "Fixed (Debian Stable)",
+    desktop: ["IceWM","Fluxbox","JWM","herbstluftwm"], packageManager: "APT (deb)", releaseModel: "Fixed (Debian Stable)",
     description: "Ultra-lightweight Debian Stable derivative for very old hardware. Can run on 256MB RAM. Uses IceWM and Fluxbox window managers. No systemd. antiX-26 'Stephen Kapos' (March 21, 2026) is based on Debian 13 'Trixie' and offers five init systems: runit (default), sysVinit, dinit, s6-rc, and s6-66.",
     pros: ["Runs on extremely old hardware (256MB RAM)","No systemd","Debian Stable packages","Very fast boot and operation"],
     cons: ["Dated appearance","Window managers require manual configuration","Not beginner-friendly UX","Limited multimedia out of box"],
@@ -229,7 +229,7 @@ const DISTROS = {
   alpine: {
     name: "Alpine Linux", tagline: "Small. Simple. Secure.", color: "#0D597F", icon: "⛰️", difficulty: 4,
     desktop: ["Any (you choose)"], packageManager: "APK", releaseModel: "Fixed (6-month cycles)",
-    description: "Security-oriented, lightweight distro built on musl libc and BusyBox. The de facto standard for Docker container base images. ~5MB base image. OpenRC init system. Alpine 3.23 (latest point 3.23.4 in April 2026) ships kernel 6.18 LTS, GNOME 49, KDE Plasma 6.5.3, and LXQt 2.3.",
+    description: "Security-oriented, lightweight distro built on musl libc and BusyBox. The de facto standard for Docker container base images. ~5MB base image. OpenRC init system. Alpine 3.24 (June 9, 2026, supported to June 2028) ships kernel 6.18 LTS, GNOME 50, KDE Plasma 6.6, COSMIC in the community repo, and Limine boot support in the installer.",
     pros: ["Tiny footprint (~5MB base)","Docker container standard","Security-hardened (PaX, SSP)","OpenRC init (simple, fast)"],
     cons: ["musl libc breaks some glibc-dependent software","Not desktop-friendly without effort","Smaller community","Limited desktop documentation"],
     website: "https://alpinelinux.org",
@@ -249,7 +249,7 @@ const DISTROS = {
   rocky: {
     name: "Rocky Linux", tagline: "Enterprise-grade, community-driven", color: "#10B981", icon: "🪨", difficulty: 3,
     desktop: ["GNOME"], packageManager: "DNF (rpm)", releaseModel: "Fixed (follows RHEL, 10-year support)",
-    description: "A 1:1 RHEL-compatible rebuild created after CentOS shifted to Stream. Rocky Linux 10 'Red Quartz' (June 2025) tracks RHEL 10 with x86-64-v3 baseline and a 10-year support lifecycle. Co-founded by CentOS co-creator Gregory Kurtzer.",
+    description: "A 1:1 RHEL-compatible rebuild created after CentOS shifted to Stream. Rocky Linux 10.2 (May 28, 2026) tracks RHEL 10.2 with an x86-64-v3 baseline and a 10-year support lifecycle. Co-founded by CentOS co-creator Gregory Kurtzer.",
     pros: ["Full RHEL compatibility","10-year support lifecycle","Free enterprise-grade Linux","Strong corporate adoption"],
     cons: ["Very old software by design","Not suitable for desktop daily use","Dependent on RHEL release timing","Minimal desktop polish"],
     website: "https://rockylinux.org",
@@ -259,7 +259,7 @@ const DISTROS = {
   alma: {
     name: "AlmaLinux", tagline: "Forever-free enterprise Linux", color: "#0F4880", icon: "🔷", difficulty: 3,
     desktop: ["GNOME"], packageManager: "DNF (rpm)", releaseModel: "Fixed (follows RHEL, 10-year support)",
-    description: "Another RHEL-compatible rebuild, backed by CloudLinux Inc. AlmaLinux 10 'Purple Lion' (May 2025) tracks RHEL 10 and uniquely ships a separate x86-64-v2 build for older hardware. Strong cloud provider support.",
+    description: "Another RHEL-compatible rebuild, backed by CloudLinux Inc. AlmaLinux 10.2 'Lavender Lion' (May 26, 2026) stays binary-compatible with RHEL 10 while restoring x86-64-v2 hardware support and adding capabilities RHEL 10 doesn't ship. Strong cloud provider support.",
     pros: ["RHEL ABI compatibility","Backed by CloudLinux Inc.","Fast security patches","Wide cloud provider support (AWS, Azure, GCP)"],
     cons: ["Old packages by design","Not for desktop use","Similar to Rocky — community fragmentation","Dependent on RHEL releases"],
     website: "https://almalinux.org",
@@ -269,7 +269,7 @@ const DISTROS = {
   rhel: {
     name: "Red Hat Enterprise Linux", tagline: "The enterprise standard", color: "#EE0000", icon: "🎩", difficulty: 3,
     desktop: ["GNOME"], packageManager: "DNF (rpm)", releaseModel: "Fixed (10-year support)",
-    description: "The commercial enterprise Linux standard. RHEL 10 (May 2025) bumps the baseline to x86-64-v3, adds the Lightspeed AI assistant, and ships kernel 6.12. 10-year support, certified hardware/software ecosystem, and professional support from Red Hat (IBM). Free for up to 16 systems via developer subscription.",
+    description: "The commercial enterprise Linux standard. RHEL 10 (May 2025, now at 10.2 from May 2026) bumps the baseline to x86-64-v3, adds the Lightspeed AI assistant, and ships kernel 6.12. 10-year support, certified hardware/software ecosystem, and professional support from Red Hat (IBM). Free for up to 16 systems via developer subscription.",
     pros: ["Industry-standard enterprise Linux","10-year support with backported security","Certified hardware and software ecosystem","Free developer subscription (16 systems)"],
     cons: ["Paid subscription for production use","Very conservative package versions","Source code access controversies","Not for personal desktop use"],
     website: "https://redhat.com/en/technologies/linux-platforms/enterprise-linux",
@@ -279,7 +279,7 @@ const DISTROS = {
   bazzite: {
     name: "Bazzite", tagline: "SteamOS for every device", color: "#8B5CF6", icon: "🎮", difficulty: 2,
     desktop: ["KDE","GNOME"], packageManager: "rpm-ostree + Flatpak", releaseModel: "Rolling (immutable, image-based)",
-    description: "An immutable Fedora Atomic-based gaming OS. Drop-in SteamOS replacement for desktops, HTPCs, and handhelds. Boots to Steam Big Picture or KDE/GNOME desktop. Now on a Fedora 44 base (Bazzite 44.20260511, May 2026) with the Open Gaming Collective kernel 6.19, refreshed Mesa, and updated Gamescope. Part of the Universal Blue project.",
+    description: "An immutable Fedora Atomic-based gaming OS. Drop-in SteamOS replacement for desktops, HTPCs, and handhelds. Boots to Steam Big Picture or KDE/GNOME desktop. Build 44.20260820 (August 2026) sits on Fedora 44 with the Open Gaming Collective kernel 7.2, KDE Plasma 6.7, GNOME 50, Mesa 26.2.1, and 90-day rollbacks. Part of the Universal Blue project.",
     pros: ["Console-like gaming experience","Immutable = rock-solid stability","Desktop, HTPC, and handheld editions","Automatic updates with rollback"],
     cons: ["Immutable model unfamiliar to traditional Linux users","Harder to customize than standard distros","Flatpak-only for apps (no native packages)","Relatively new project"],
     website: "https://bazzite.gg",
@@ -289,7 +289,7 @@ const DISTROS = {
   nobara: {
     name: "Nobara", tagline: "Fedora tuned for gaming", color: "#FF6B35", icon: "🌺", difficulty: 2,
     desktop: ["KDE","GNOME"], packageManager: "DNF (rpm) + Flatpak", releaseModel: "Fixed (follows Fedora)",
-    description: "A Fedora fork by GloriousEggroll (the Proton-GE maintainer). Pre-configured with gaming tools, codecs, custom kernel optimizations, and falcond for per-game CPU tuning. KDE Plasma default. Nobara 43 (April 19, 2026) tracks the Fedora 43 base across five desktop editions targeting everything from desktops to handhelds.",
+    description: "A Fedora fork by GloriousEggroll (the Proton-GE maintainer). Pre-configured with gaming tools, codecs, custom kernel optimizations, and falcond for per-game CPU tuning. KDE Plasma default. Nobara 44 (August 28, 2026) ships five editions on a rolling model, with a unified AMD/Intel/NVIDIA ISO and Brave as the default browser.",
     pros: ["Pre-installed gaming stack (Steam, Lutris, Proton-GE)","Custom kernel with latency/performance tweaks","Codecs and drivers included out of box","Built by the Proton-GE maintainer"],
     cons: ["One-person passion project — bus factor risk","Updates lag behind vanilla Fedora","Lots of pre-installed software (perceived bloat)","Not officially affiliated with Fedora"],
     website: "https://nobaraproject.org",
@@ -299,7 +299,7 @@ const DISTROS = {
   garuda: {
     name: "Garuda Linux", tagline: "Performance Arch with flair", color: "#E91E63", icon: "🦅", difficulty: 3,
     desktop: ["KDE","GNOME","Xfce","Sway","i3","Hyprland"], packageManager: "Pacman + AUR", releaseModel: "Rolling",
-    description: "An Arch-based distro with flashy aesthetics (Dragonized), gaming optimizations, Btrfs + Snapper snapshots, and pre-installed gaming tools. The 'Spizaetus' release ships Hyprland by default, replaces grep with ugrep, and adds an experimental chaotic-aur-kde repo for early Plasma 6 builds.",
+    description: "An Arch-based distro with flashy aesthetics (Dragonized), gaming optimizations, Btrfs + Snapper snapshots, and pre-installed gaming tools. 'Temeraire' (August 19, 2026) switches to the CachyOS-derived linux-garuda kernel on Linux 7.2, adopts the Plasma Login Manager, rewrites the Hyprland edition in Lua, and ships 11 desktop editions.",
     pros: ["Gaming Edition comes ready to play","Btrfs snapshots auto-created before updates","Multiple desktop editions including Dragonized","Performance-tuned kernel options"],
     cons: ["Flashy aesthetics not for minimalists","Arch-based — requires some maintenance","Lots of pre-installed software","Smaller community than EndeavourOS/Manjaro"],
     website: "https://garudalinux.org",
@@ -309,9 +309,9 @@ const DISTROS = {
   steamos: {
     name: "SteamOS", tagline: "Valve's gaming OS for Steam Deck", color: "#1B2838", icon: "🎮", difficulty: 2,
     desktop: ["KDE"], packageManager: "Flatpak (desktop)", releaseModel: "Rolling (immutable)",
-    description: "Valve's Arch-based OS powering the Steam Deck. Boots to Game Mode (Big Picture) or a KDE Plasma desktop. Immutable base with Flatpak for desktop apps. SteamOS 3.7 is the current stable line; 3.8 'Second Clutch' is in preview (3.8.4 Beta in May 2026) bringing initial Steam Machine support, refreshed graphics drivers, and broader AMD handheld compatibility.",
+    description: "Valve's Arch-based OS powering the Steam Deck and the new Steam Machine. Boots to Game Mode (Big Picture) or a KDE Plasma desktop. Immutable base with Flatpak for desktop apps. SteamOS 3.8 went stable on June 18, 2026 with Steam Machine support, KDE Plasma 6.4.3 on Wayland, kernel 6.16, and official images for generic AMD PCs.",
     pros: ["Built specifically for gaming by Valve","Powers the Steam Deck","Console-like Game Mode experience","KDE desktop for productivity"],
-    cons: ["Designed for Steam Deck hardware","Limited non-gaming software","Desktop mode is secondary focus","Not officially supported on non-Deck hardware"],
+    cons: ["Designed for Steam Deck hardware","Limited non-gaming software","Desktop mode is secondary focus","Official generic-PC images are AMD-only; NVIDIA support targeted for 2027"],
     website: "https://store.steampowered.com/steamos",
     traits: { beginner: 7, gaming: 10, privacy: 3, dev: 2, server: 0, light: 4, custom: 3, stable: 8, latest: 7 },
     categories: ["gaming"], nvidiaSupport: "poor", immutable: true,
@@ -319,7 +319,7 @@ const DISTROS = {
   solus: {
     name: "Solus", tagline: "Designed for home computing", color: "#5294E2", icon: "🌊", difficulty: 2,
     desktop: ["Budgie","GNOME","KDE","MATE"], packageManager: "eopkg", releaseModel: "Rolling (curated)",
-    description: "An independent, curated rolling-release distro with its own Budgie desktop environment. Focuses on a polished desktop experience with careful package curation. Solus 4.9 'Serenity' ships kernel 6.18, LUKS2, and the in-progress Wayland transition.",
+    description: "An independent, curated rolling-release distro with its own Budgie desktop environment. Focuses on a polished desktop experience with careful package curation. Solus 4.9 'Serenity' (April 2026) ships kernel 6.18 LTS, Budgie 10.9.4, KDE Plasma 6.6.4, GNOME 49.5, Mesa 26, and LUKS2 by default.",
     pros: ["Beautiful Budgie desktop (created by Solus)","Curated rolling release — tested before shipping","Clean, focused desktop experience","Independent — no parent distro baggage"],
     cons: ["Smaller package repository","History of project leadership changes","Smaller community than major distros","eopkg is unique — no cross-distro skills"],
     website: "https://getsol.us",
@@ -329,7 +329,7 @@ const DISTROS = {
   kali: {
     name: "Kali Linux", tagline: "Penetration testing & security auditing", color: "#367BF0", icon: "🐉", difficulty: 3,
     desktop: ["Xfce","GNOME","KDE"], packageManager: "APT (deb)", releaseModel: "Rolling (Debian Testing)",
-    description: "The industry-standard penetration testing distribution. Ships 600+ security tools pre-installed. Based on Debian Testing. Kali 2026.1 (March 2026) introduces a BackTrack-inspired mode in kali-undercover for the 20th anniversary, bumps the kernel to 6.18, and adds eight new tools. Not designed as a daily-driver desktop OS.",
+    description: "The industry-standard penetration testing distribution. Ships 600+ security tools pre-installed. Based on Debian Testing. Kali 2026.2 (June 29, 2026) ships Linux 6.19 and Xfce 4.20.7, with GNOME 50 and KDE Plasma 6.6 options, nine new tools, and NetHunter updates. Not designed as a daily-driver desktop OS.",
     pros: ["600+ pre-installed security tools","Industry standard for pentesting","Regular tool and kernel updates","Good documentation and training resources"],
     cons: ["Not designed for daily desktop use","Running as root by default was a past issue","Can be overwhelming for beginners","Misused by people who don't understand it"],
     website: "https://kali.org",
@@ -338,10 +338,10 @@ const DISTROS = {
   },
   parrot: {
     name: "Parrot OS", tagline: "Security, privacy & development", color: "#00D4AA", icon: "🦜", difficulty: 3,
-    desktop: ["MATE","KDE"], packageManager: "APT (deb)", releaseModel: "Rolling (Debian Testing)",
-    description: "Security-focused Debian derivative with Home (privacy/daily use) and Security (pentesting) editions. Parrot OS 7.2 (May 9, 2026) ships kernel 6.19.13 with the Copy Fail (CVE-2026-31431) patch, KDE Plasma 6.3.6, and refreshed tooling (Metasploit 6.4.127, BloodHound 9.0, sqlmap 1.10.3). Lighter than Kali and more suitable as a daily driver for security professionals.",
+    desktop: ["KDE","MATE","LXQt"], packageManager: "APT (deb)", releaseModel: "Fixed (Debian Stable) + rolling tool repos",
+    description: "Security-focused Debian derivative with Home (privacy/daily use) and Security (pentesting) editions. Parrot 7.3 'Echo' (June 29, 2026) adds an optional repo rebuilt for x86-64-v3 and ARMv8.2-A, a reworked menu, and Vagrant images. The 7.x series runs KDE Plasma on Wayland atop Debian 13 stable, with rolling security-tool repos on top. Lighter than Kali and viable as a daily driver.",
     pros: ["Home Edition works as a privacy daily driver","Lighter than Kali with similar security tools","AnonSurf for Tor integration","Good for security learning"],
-    cons: ["Smaller community than Kali","Fewer guides and training resources","Pentesting tools overkill for most users","Based on Testing — occasional instability"],
+    cons: ["Smaller community than Kali","Fewer guides and training resources","Pentesting tools overkill for most users","Security tools roll forward faster than the Debian base"],
     website: "https://parrotsec.org",
     traits: { beginner: 3, gaming: 2, privacy: 8, dev: 6, server: 2, light: 5, custom: 5, stable: 6, latest: 6 },
     categories: ["security","pentesting","privacy"], nvidiaSupport: "fair", immutable: false,
@@ -349,7 +349,7 @@ const DISTROS = {
   kubuntu: {
     name: "Kubuntu", tagline: "KDE Plasma on Ubuntu", color: "#0074D9", icon: "🔵", difficulty: 1,
     desktop: ["KDE"], packageManager: "APT (deb) + Snap", releaseModel: "Fixed (follows Ubuntu LTS)",
-    description: "Official Ubuntu flavor featuring KDE Plasma desktop. Same Ubuntu base with LTS support but a more customizable, Windows-like interface. Kubuntu 26.04 LTS (April 23, 2026) ships KDE Plasma 6.6 on Wayland with five years of standard support.",
+    description: "Official Ubuntu flavor featuring KDE Plasma desktop. Same Ubuntu base with LTS support but a more customizable, Windows-like interface. Kubuntu 26.04.1 LTS (August 27, 2026) ships KDE Plasma 6.6 on Wayland with three years of flavor support.",
     pros: ["Full Ubuntu compatibility","KDE Plasma's extensive customization","LTS support cycle","Familiar Windows-like layout"],
     cons: ["KDE can feel complex for beginners","Snap packages in base install","Smaller community than mainline Ubuntu","Can be heavier than GNOME on some hardware"],
     website: "https://kubuntu.org",
@@ -359,7 +359,7 @@ const DISTROS = {
   xubuntu: {
     name: "Xubuntu", tagline: "Elegant and easy to use", color: "#2A96E7", icon: "🐭", difficulty: 1,
     desktop: ["Xfce"], packageManager: "APT (deb) + Snap", releaseModel: "Fixed (follows Ubuntu LTS)",
-    description: "Official Ubuntu flavor with Xfce desktop. Lighter than GNOME while maintaining full Ubuntu compatibility. Good for mid-range and older hardware. Xubuntu 26.04 LTS (April 23, 2026, supported through April 2029) ships Xfce 4.20 with GNOME 49 components.",
+    description: "Official Ubuntu flavor with Xfce desktop. Lighter than GNOME while maintaining full Ubuntu compatibility. Good for mid-range and older hardware. Xubuntu 26.04.1 LTS (August 27, 2026, supported through April 2029) ships Xfce 4.20 with GNOME 49 components.",
     pros: ["Lighter than GNOME Ubuntu","Full Ubuntu compatibility","Xfce is fast and stable","Good for older hardware"],
     cons: ["Xfce looks dated to some users","Fewer modern DE features than KDE/GNOME","Smaller community than mainline Ubuntu","Less polished out of box"],
     website: "https://xubuntu.org",
@@ -369,7 +369,7 @@ const DISTROS = {
   lubuntu: {
     name: "Lubuntu", tagline: "Lightweight Ubuntu with LXQt", color: "#0067C0", icon: "🪶", difficulty: 1,
     desktop: ["LXQt"], packageManager: "APT (deb) + Snap", releaseModel: "Fixed (follows Ubuntu LTS)",
-    description: "Official Ubuntu flavor targeting older computers and resource-constrained hardware. Uses LXQt desktop environment for minimal resource usage while keeping Ubuntu compatibility. Lubuntu 26.04 LTS shipped on April 23, 2026 as part of the LTS cycle.",
+    description: "Official Ubuntu flavor targeting older computers and resource-constrained hardware. Uses LXQt desktop environment for minimal resource usage while keeping Ubuntu compatibility. Lubuntu 26.04.1 LTS (August 27, 2026) is the current image, supported for three years.",
     pros: ["Very low resource usage","Full Ubuntu package compatibility","LXQt is fast and functional","Ideal for repurposing old hardware"],
     cons: ["LXQt is basic — fewer features","Less polished visually","Smaller user community","Some tasks require manual configuration"],
     website: "https://lubuntu.me",
@@ -379,7 +379,7 @@ const DISTROS = {
   ubuntu_mate: {
     name: "Ubuntu MATE", tagline: "Traditional desktop for everyone", color: "#87A556", icon: "🟤", difficulty: 1,
     desktop: ["MATE"], packageManager: "APT (deb) + Snap", releaseModel: "Fixed (follows Ubuntu LTS)",
-    description: "Official Ubuntu flavor with the MATE desktop — a continuation of GNOME 2. Traditional desktop layout that's intuitive and resource-efficient. Great Raspberry Pi support. No official 26.04 build was produced and the project lead departed at the end of March 2026, leaving Ubuntu MATE's future uncertain — 24.04 LTS remains the recommended install.",
+    description: "Official Ubuntu flavor with the MATE desktop — a continuation of GNOME 2. Traditional desktop layout that's intuitive and resource-efficient. Great Raspberry Pi support. No 26.04 ISO was produced after the project lead departed in March 2026, but a new team has taken over and is targeting 26.10 — 24.04 LTS remains the recommended install.",
     pros: ["Traditional, intuitive desktop layout","Lower resource use than GNOME","Excellent Raspberry Pi support","Highly customizable panel layouts"],
     cons: ["MATE looks dated to some","Smaller community than mainline","Fewer modern DE features","Wayland support still in progress"],
     website: "https://ubuntu-mate.org",
@@ -389,7 +389,7 @@ const DISTROS = {
   kde_neon: {
     name: "KDE neon", tagline: "Latest KDE on stable Ubuntu", color: "#1D99F3", icon: "💠", difficulty: 2,
     desktop: ["KDE"], packageManager: "APT (deb)", releaseModel: "Fixed base + rolling KDE",
-    description: "The latest KDE Plasma desktop on a stable Ubuntu LTS base. Maintained by the KDE project itself. You always get the newest KDE on release day, with Ubuntu's rock-solid foundation. Current KDE neon images (2026.02.26) ship Plasma 6.6.1 on Ubuntu 24.04 LTS.",
+    description: "The latest KDE Plasma desktop on a stable Ubuntu LTS base. Maintained by the KDE project itself. You always get the newest KDE on release day, with Ubuntu's rock-solid foundation. Weekly images (August 2026) ship Plasma 6.7.4, KDE Frameworks 6.29, and KDE Gear 26.08 on Ubuntu 24.04 LTS.",
     pros: ["Absolute latest KDE on release day","Maintained by KDE developers themselves","Stable Ubuntu LTS base","Best showcase of KDE Plasma"],
     cons: ["Only KDE Plasma — no alternatives","Not a full distro — focused on KDE showcase","Smaller community","Base Ubuntu packages can be old"],
     website: "https://neon.kde.org",
@@ -399,7 +399,7 @@ const DISTROS = {
   deepin: {
     name: "deepin", tagline: "Beautiful and intuitive", color: "#0078D7", icon: "🌊", difficulty: 1,
     desktop: ["DDE"], packageManager: "APT (deb)", releaseModel: "Fixed (based on Debian)",
-    description: "Chinese-developed distribution with the stunning Deepin Desktop Environment. deepin 25 'All Advancing, All Renewed' ships the QML-rebuilt DDE 7.0, UOS AI features (summaries, translations, voice commands), and 1,000+ optimizations; deepin 25.1.0 adds kernel 6.18 and the BORE scheduler. Based on Debian Stable.",
+    description: "Chinese-developed distribution with the stunning Deepin Desktop Environment. deepin 25 'All Advancing, All Renewed' ships the QML-rebuilt DDE 7.0, UOS AI features (summaries, translations, voice commands), and 1,000+ optimizations; deepin 25.2 (July 2026) adds smarter file search and further desktop refinements. Based on Debian Stable.",
     pros: ["Arguably the most beautiful Linux desktop","Unique Deepin Desktop Environment","Very beginner-friendly UX","Good hardware compatibility"],
     cons: ["Chinese origin raises privacy concerns for some","DDE can be resource-heavy","Smaller global community","Some telemetry concerns historically"],
     website: "https://deepin.org",
@@ -409,9 +409,9 @@ const DISTROS = {
   artix: {
     name: "Artix Linux", tagline: "Arch without systemd", color: "#5090C8", icon: "🌀", difficulty: 4,
     desktop: ["Any (you choose)"], packageManager: "Pacman + AUR", releaseModel: "Rolling",
-    description: "An Arch Linux fork that replaces systemd with your choice of runit, OpenRC, s6, or dinit. Artix 2026.04 (April 3, 2026) is the first 2026 ISO, shipping kernel 6.19.10, XLibre as the default display server (replacing X.org), PipeWire by default, and KDE Plasma 6.6. For users who want Arch's rolling packages and AUR without systemd.",
+    description: "An Arch Linux fork that replaces systemd with your choice of runit, OpenRC, s6, or dinit. The Artix 2026.08 ISO (August 14, 2026) reverted to Xorg after briefly defaulting to XLibre, and declares user services fully supported on OpenRC and dinit. For users who want Arch's rolling packages and AUR without systemd.",
     pros: ["Arch packages and AUR without systemd","Choice of init: runit, OpenRC, s6, dinit","Rolling release","Good for systemd-free purists"],
-    cons: ["Some Arch packages need systemd patches","Smaller community than Arch","AUR packages may assume systemd","Requires more manual intervention"],
+    cons: ["Some Arch packages need systemd patches","Smaller community than Arch","GNOME support was dropped in 2025 over its systemd dependencies","Requires more manual intervention"],
     website: "https://artixlinux.org",
     traits: { beginner: 1, gaming: 6, privacy: 7, dev: 7, server: 4, light: 7, custom: 9, stable: 5, latest: 9 },
     categories: ["advanced"], nvidiaSupport: "fair", immutable: false,
@@ -439,7 +439,7 @@ const DISTROS = {
   peppermint: {
     name: "Peppermint OS", tagline: "Ice-cool lightweight Linux", color: "#C0392B", icon: "🍬", difficulty: 1,
     desktop: ["Xfce"], packageManager: "APT (deb)", releaseModel: "Fixed (Debian Stable)",
-    description: "A lightweight Debian-based distro using Xfce. Designed for cloud-centric workflows and web applications. Very low resource footprint with a clean, minimal interface. The Trixie-based flagship (October 2025) ships kernel 6.12 LTS and Xfce 4.20; a Devuan-based 'Excalibur' testing edition arrived May 2026 for users who want init choice.",
+    description: "A lightweight Debian-based distro using Xfce. Designed for cloud-centric workflows and web applications. Very low resource footprint with a clean, minimal interface. The Debian 13 'Trixie' flagship (October 2025) ships kernel 6.12 LTS and Xfce 4.20; a systemd-free Devuan 6 'Excalibur' build followed on June 12, 2026, letting you pick SysVinit, OpenRC, or runit at install time.",
     pros: ["Very lightweight and fast","Good for cloud/web workflows","Clean, minimal interface","Debian Stable base for reliability"],
     cons: ["Limited pre-installed applications","Xfce desktop may feel basic","Smaller community","Not much beyond lightweight browsing"],
     website: "https://peppermintos.com",
@@ -459,7 +459,7 @@ const DISTROS = {
   puppy: {
     name: "Puppy Linux", tagline: "Small, fast, runs in RAM", color: "#FF9800", icon: "🐶", difficulty: 3,
     desktop: ["JWM","Openbox"], packageManager: "PET / SFS packages", releaseModel: "Fixed (various puplets)",
-    description: "An ultra-lightweight family of distros that load entirely into RAM. Boots from USB/CD in seconds on ancient hardware. Saves session to a persistent file. Current builds include BookwormPup64 10.0.12 (May 2026) based on Debian 12.12 with kernel 6.1.148 LTS, Firefox-ESR, and Zstd-compressed SFS. Incredibly fast once loaded.",
+    description: "An ultra-lightweight family of distros that load entirely into RAM. Boots from USB/CD in seconds on ancient hardware. Saves session to a persistent file. Current builds include BookwormPup64 10.0.12 on a Debian 12 base, alongside newer Trixie-based puplets including a Wayland variant. Incredibly fast once loaded.",
     pros: ["Entire OS runs in RAM — blazing fast","Boots on ancient hardware (128MB RAM)","Portable — runs from USB/CD","Saves session to persistent file"],
     cons: ["Unconventional package management","Dated interface","Not suitable for modern desktop workflows","Running as root by default"],
     website: "https://puppylinux-woof-ce.github.io",
@@ -469,7 +469,7 @@ const DISTROS = {
   sparky: {
     name: "SparkyLinux", tagline: "Fast, lightweight, fully customizable", color: "#D32F2F", icon: "⚡", difficulty: 2,
     desktop: ["LXQt","KDE","Xfce","MATE","Openbox"], packageManager: "APT (deb)", releaseModel: "Fixed (Stable) or Rolling (Testing)",
-    description: "A Debian-based distro available in Stable and Rolling editions. SparkyLinux 2026.03 'Tiamat' (rolling, based on Debian 14 'Forky') ships kernel 6.19.6 and GCC15 across LXQt, KDE Plasma, MATE, Xfce, MinimalGUI (Openbox), and MinimalCLI flavors; SparkyLinux 8.3 is the current stable line.",
+    description: "A Debian-based distro available in Stable and Rolling editions. The rolling 'Tiamat' line tracks Debian Testing 'Forky' — the 2026.06 ISOs ship Linux 7.0 and Calamares 3.4.2 across LXQt, KDE Plasma, MATE, Xfce, MinimalGUI (Openbox), and MinimalCLI flavors, and drop the Lumina desktop. The stable line follows Debian 13.",
     pros: ["Choice of Stable or Rolling","Multiple DE options","Good Gaming/Multimedia editions","Lightweight options available"],
     cons: ["Less polished than Ubuntu derivatives","Smaller community","Rolling edition can have Debian Testing issues","Less documentation than MX Linux"],
     website: "https://sparkylinux.org",
@@ -479,7 +479,7 @@ const DISTROS = {
   bunsenlabs: {
     name: "BunsenLabs", tagline: "A light-weight Openbox desktop", color: "#505050", icon: "🔥", difficulty: 3,
     desktop: ["Openbox"], packageManager: "APT (deb)", releaseModel: "Fixed (Debian Stable)",
-    description: "Successor to CrunchBang. A minimalist Debian-based distro with preconfigured Openbox window manager, tint2 panel, and conky. BunsenLabs Carbon (February 11, 2026) is rebased on Debian 13 'Trixie' with components that work on both X11 and the Wayland-based labwc compositor; 32-bit i386 support has been dropped. For users who love a clean, keyboard-driven workflow.",
+    description: "Successor to CrunchBang. A minimalist Debian-based distro with a preconfigured Openbox setup, xfce4-panel, and conky. BunsenLabs Carbon (February 2026) is rebased on Debian 13 'Trixie' with kernel 6.12 LTS and apps that work in both X11 and Wayland sessions; 32-bit i386 support has been dropped. For users who love a clean, keyboard-driven workflow.",
     pros: ["Beautiful preconfigured Openbox","Extremely lightweight","Keyboard-driven workflow","Debian Stable reliability"],
     cons: ["Openbox requires learning","Not for beginners","Small community","Very DIY for anything beyond basics"],
     website: "https://bunsenlabs.org",
@@ -489,9 +489,9 @@ const DISTROS = {
   mageia: {
     name: "Mageia", tagline: "Mandriva's community successor", color: "#2397D4", icon: "🟦", difficulty: 2,
     desktop: ["KDE","GNOME","Xfce"], packageManager: "DNF/urpmi (rpm)", releaseModel: "Fixed (annual)",
-    description: "A community fork of the historic Mandriva Linux. Features the Mageia Control Center (MCC) for system administration and a friendly, community-driven development process. Mageia 10 (beta as of March 2026, GA targeted for April 2026 but slipping) brings kernel 6.12 LTS, KDE Plasma 6.5, GNOME 49, Xfce 4.20, DNF 5, and Python 3.13 — still one of the few distros offering 32-bit i686 install images.",
+    description: "A community fork of the historic Mandriva Linux. Features the Mageia Control Center (MCC) for system administration and a friendly, community-driven development process. Mageia 10 (June 28, 2026) arrived nearly three years after Mageia 9 with kernel 6.18 LTS, KDE Plasma 6.5.5, GNOME 49, Xfce 4.20, DNF 5, and Wayland by default — still one of the few distros offering 32-bit i686 install images.",
     pros: ["Mageia Control Center for easy admin","Mandriva heritage","Community-driven governance","Multiple DE options"],
-    cons: ["Declining community activity","Fewer packages than major distros","Less modern than peers","Uncertain long-term future"],
+    cons: ["Small volunteer development team","Fewer packages than major distros","Less modern than peers","No Secure Boot support"],
     website: "https://mageia.org",
     traits: { beginner: 6, gaming: 4, privacy: 5, dev: 5, server: 4, light: 5, custom: 5, stable: 7, latest: 4 },
     categories: ["desktop"], nvidiaSupport: "fair", immutable: false,
@@ -559,7 +559,7 @@ const DISTROS = {
   vanillaos: {
     name: "Vanilla OS", tagline: "Vanilla experience, immutable by design", color: "#FFAB00", icon: "🍦", difficulty: 2,
     desktop: ["GNOME"], packageManager: "Apx (multi-distro containers) + Flatpak", releaseModel: "Fixed",
-    description: "An immutable Ubuntu-based distro using the Vib image builder and ABRoot for atomic transactions. Apx package manager can install from any distro's repos via containers.",
+    description: "An immutable Debian-based distro using the Vib image builder and ABRoot for atomic transactions; the Apx package manager installs from any distro's repos via containers. Vanilla OS 3 'Reunion' (August 24, 2026) adds official ARM64 support, reproducible system images, and GNOME 50.",
     pros: ["Immutable with atomic updates","Apx can install packages from any distro","Clean, unmodified GNOME experience","Innovative approach to package management"],
     cons: ["Young project (2022)","Small community","Immutable model has learning curve","Limited real-world track record"],
     website: "https://vanillaos.org",
@@ -568,10 +568,10 @@ const DISTROS = {
   },
   nitrux: {
     name: "Nitrux", tagline: "Beautiful and immutable", color: "#2196F3", icon: "💎", difficulty: 2,
-    desktop: ["KDE (NX Desktop)"], packageManager: "APT + AppImage + Flatpak", releaseModel: "Fixed (quarterly)",
-    description: "A Debian-based immutable distribution featuring the NX Desktop (customized KDE Plasma) and MauiKit applications. Nitrux 6.0.0 (March 2026) adds the VxM hypervisor with GPU passthrough, an initramfs-based Rescue Mode, a rewritten C++ update system (nuts-cpp) with cryptographic verification, and kernel 6.19 — with separate NVIDIA and AMD/Intel ISO variants.",
-    pros: ["Stunning default KDE customization","AppImage-focused app delivery","Immutable root for stability","OpenRC init (no systemd)"],
-    cons: ["Non-standard package management","Small development team","OpenRC can cause compatibility issues","Learning curve for NX Desktop specifics"],
+    desktop: ["Hyprland"], packageManager: "APT + AppImage + Flatpak", releaseModel: "Fixed (quarterly)",
+    description: "A Debian-based, systemd-free immutable distribution. Since 5.0 it has dropped KDE Plasma for Hyprland with Waybar and MauiKit apps, using OpenRC and AppImage/NX AppHub software delivery. Nitrux 6.1 (May 20, 2026) ships Linux 7.0 with CachyOS patches, Hyprland 0.55.1, and separate NVIDIA and Mesa ISOs.",
+    pros: ["Polished Hyprland setup configured out of the box","AppImage-focused app delivery","Immutable root for stability","OpenRC init (no systemd)"],
+    cons: ["Non-standard package management","Small development team","OpenRC can cause compatibility issues","Hyprland's tiling workflow is a big change for newcomers"],
     website: "https://nxos.org",
     traits: { beginner: 5, gaming: 4, privacy: 5, dev: 5, server: 2, light: 4, custom: 5, stable: 7, latest: 5 },
     categories: ["desktop","immutable"], nvidiaSupport: "fair", immutable: true,
@@ -1204,7 +1204,7 @@ export default function App() {
       </main>
       <footer style={{ padding: "40px 24px", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.04)", fontSize: 12, color: "var(--text-dim)", lineHeight: 1.8 }}>
         <p>PickMyDistro {"\u2014"} Helping users find their perfect Linux distribution.</p>
-        <p style={{ marginTop: 4, fontFamily: "var(--font-mono)", fontSize: 11 }}>Decision tree engine {"\u2022"} {DISTRO_COUNT} distros {"\u2022"} Data last updated: May 2026</p>
+        <p style={{ marginTop: 4, fontFamily: "var(--font-mono)", fontSize: 11 }}>Decision tree engine {"\u2022"} {DISTRO_COUNT} distros {"\u2022"} Data last updated: September 2026</p>
         <p style={{ marginTop: 4, fontFamily: "var(--font-mono)", fontSize: 11 }}>
           Open source on <a href="https://github.com/01E0E1/PickMyDistro" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-mid)", textDecoration: "underline" }}>GitHub</a>
         </p>

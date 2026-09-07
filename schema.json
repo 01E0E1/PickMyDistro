@@ -6,6 +6,7 @@
   "properties": {
     "version": { "type": "string", "description": "Schema version for compatibility tracking" },
     "lastUpdated": { "type": "string", "format": "date", "description": "Date data was last verified" },
+    "distroCount": { "type": "integer", "description": "Number of entries in distros (kept in sync with the object below)" },
     "distros": {
       "type": "object",
       "additionalProperties": {
@@ -14,7 +15,7 @@
         "properties": {
           "name": { "type": "string", "description": "Display name of the distribution" },
           "tagline": { "type": "string", "maxLength": 60, "description": "Short tagline (under 60 chars)" },
-          "description": { "type": "string", "maxLength": 300, "description": "One-paragraph description (under 300 chars)" },
+          "description": { "type": "string", "maxLength": 400, "description": "One-paragraph description (under 400 chars); keep the release-specific details at the end so they are easy to refresh" },
           "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$", "description": "Brand hex color" },
           "icon": { "type": "string", "description": "Emoji icon for display" },
           "difficulty": { "type": "integer", "minimum": 1, "maximum": 5, "description": "1=Easy, 5=Expert" },
