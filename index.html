@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary SEO -->
-    <title>Linux Distro Chooser — Find the Best Distribution for You | PickMyDistro</title>
+    <title>Linux Distro Chooser — Find Your Perfect Distro | PickMyDistro</title>
     <meta name="description" content="Not sure which Linux distro to use? Take a 30-second adaptive quiz to find the best Linux distribution for your needs. 57 distros compared — for beginners, gamers, developers, servers, and privacy." />
     <meta name="keywords" content="linux distro chooser, which linux should I use, best linux distribution 2026, linux quiz, linux for beginners, linux for gaming, linux for servers, best linux distro for developers" />
     <link rel="canonical" href="https://pickmydistro.net" />
@@ -31,6 +31,14 @@
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Base styles so the shell matches the app before React mounts (no white flash) -->
+    <style>
+      body { margin: 0; background: #0a0a0f; color: #eaeaf0; font-family: system-ui, sans-serif; min-height: 100vh; }
+      .prerender { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 24px 40px; }
+      .prerender h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 700; line-height: 1.1; margin: 0 0 16px; max-width: 700px; }
+      .prerender p { font-size: 17px; line-height: 1.7; color: #a8a8b8; max-width: 520px; margin: 0; }
+    </style>
 
     <!-- Structured Data: WebApplication -->
     <script type="application/ld+json">
@@ -99,10 +107,20 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!--
+        Static fallback so crawlers (and users before JS loads) get a real heading and
+        a description of the page. React replaces these children on mount, so this must
+        stay in sync with the heading in HeroSection in src/App.jsx.
+      -->
+      <div class="prerender">
+        <h1>Find Your Perfect Linux Distro</h1>
+        <p>An adaptive quiz that matches you with one of 57 Linux distributions in 3–5 questions — for beginners, gamers, developers, servers, and privacy.</p>
+      </div>
+    </div>
     <noscript>
       <div style="padding: 40px; text-align: center; font-family: system-ui, sans-serif; background: #0a0a0f; color: #eaeaf0; min-height: 100vh;">
-        <h1>PickMyDistro — Linux Distribution Chooser</h1>
+        <h2>PickMyDistro — Linux Distribution Chooser</h2>
         <p style="margin: 20px 0; color: #a8a8b8;">This app requires JavaScript to run the interactive quiz. Please enable JavaScript in your browser settings.</p>
         <p style="color: #a8a8b8;">Looking for a Linux distribution? Here are some popular starting points:</p>
         <ul style="list-style: none; padding: 0; margin: 20px 0; color: #a8a8b8;">
